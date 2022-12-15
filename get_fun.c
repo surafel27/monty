@@ -45,5 +45,4 @@ void get_fun(stack_t **stack, char *buffer)
 			line_number++;
 			token = strtok(NULL, "\n\t\a\r :;");
 	}
-	free(token);
 }

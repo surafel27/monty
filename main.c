@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	if (fd == -1)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		free_list(&stack);
 		exit(EXIT_FAILURE);
 	}
 	buffer = malloc(sizeof(char) * 100);
@@ -36,6 +37,7 @@ int main(int argc, char **argv)
 	{
 		fprintf(stderr, "Error: can't read file %s\n", argv[1]);
 		free(buffer);
+		free_list(&stack);
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
