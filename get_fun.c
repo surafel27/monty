@@ -43,7 +43,7 @@ int check_stack(stack_t **stack, char *token, unsigned int line)
  * get_fun - interpreate the instructions
  * @buffer: string read from a file
  * @stack: pointer to pointer to TOS
- *
+ * Return: 1 if sucess -1 if fail
  */
 
 int get_fun(stack_t **stack, char *buffer)
@@ -80,9 +80,8 @@ int get_fun(stack_t **stack, char *buffer)
 			else
 			{
 				free_list(stack);
-				printf("L%u: unknown instruction %s\n", line_number, token);
-				free(token);
-				exit(EXIT_FAILURE);
+				fprintf("L%u: unknown instruction %s\n", line_number, token);
+				return (-1);
 			}
 		}
 			line_number++;

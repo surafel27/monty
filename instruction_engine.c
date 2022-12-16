@@ -5,6 +5,7 @@
  * @stack: pointer to pointer to top of stack
  * @line_number: line number
  * @n: number to be added
+ * Return: 1 if success -1 on fail
  *
  */
 
