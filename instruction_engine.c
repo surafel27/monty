@@ -8,14 +8,14 @@
  *
  */
 
-void push(stack_t **stack, unsigned int line_number, const char *n)
+int push(stack_t **stack, unsigned int line_number, const char *n)
 {
 	stack_t *new;
 
 	if (isdigit(atoi(n)) != 0 || (atoi(n) == 0 && *n != '0'))
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_list(stack);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -32,6 +32,7 @@ void push(stack_t **stack, unsigned int line_number, const char *n)
 		(*stack)->prev = new;
 	new->next = *stack;
 	*stack = new;
+	return (0);
 }
 
 /**
@@ -43,14 +44,18 @@ void push(stack_t **stack, unsigned int line_number, const char *n)
 
 void pall(stack_t **stack, unsigned int line_number)
 {
-	(void)line_number;
+	stack_t *tmp = NULL;
 
 	if (!(stack) || !(*stack))
 		return;
-	while (*stack != NULL)
+
+	(void)line_number;
+
+	tmp = *stack;
+	while (tmp != NULL)
 	{
-		fprintf(stdout, "%d\n", (*stack)->n);
-		*stack = (*stack)->next;
+		fprintf(stdout, "%d\n", tmp->n);
+		tmp = tmp->next;
 	}
 }
 
@@ -101,6 +106,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		free_list(stack);
 		exit(EXIT_FAILURE);
 	}
 
