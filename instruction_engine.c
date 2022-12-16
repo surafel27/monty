@@ -13,7 +13,7 @@ int push(stack_t **stack, unsigned int line_number, const char *n)
 {
 	stack_t *new;
 
-	if (isdigit(atoi(n)) != 0 || (atoi(n) == 0 && *n != '0'))
+	if (check_n(n) == -1 || n == NULL)
 	{
 		free_list(stack);
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
