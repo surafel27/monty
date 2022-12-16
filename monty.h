@@ -57,4 +57,6 @@ void mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 int check_n(const char *n);
+int filter(char *opcode);
+void nop(stack_t **stack, unsigned int line_number);
 #endif /** End of the MAIN */

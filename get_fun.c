@@ -27,7 +27,7 @@ int check_stack(stack_t **stack, char *token, unsigned int line)
 			return (-1);
 		}
 	}
-	else if (strcmp(token, "pall") != 0 && strcmp(token, "nop") != 0)
+	else if (filter(token) == 1)
 	{
 		if (!(stack) || !(*stack) || (*stack)->next == NULL)
 		{

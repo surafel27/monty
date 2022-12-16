@@ -22,3 +22,23 @@ int check_n(const char *n)
 	}
 	return (1);
 }
+
+/**
+ * filter - filters opcode
+ * @opcode: opcode
+ * Return: 1 on success, -1 if it fails
+ */
+
+int filter(char *opcode)
+{
+	char *a[] = {"add", "sub", "div", "swap", "mul", "mod", "nop", NULL};
+	int i = 0;
+
+	while (a[i] != NULL)
+	{
+		if (strcmp(opcode, a[i]) == 0)
+			return (1);
+		i++;
+	}
+	return (-1);
+}
